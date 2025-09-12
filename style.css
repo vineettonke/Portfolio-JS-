@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Roboto", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 html, body{
@@ -34,6 +34,7 @@ html, body{
     font-size: 16px;
     text-decoration: none;
     color: white;
+    font-weight: 600;
 }
 
 #navbar h4{
@@ -48,14 +49,14 @@ html, body{
 #heading h1{
     margin-left: 40px;
     opacity: 0.7;
-    font-size: 12vw;
+    font-size: 10vw;
     text-transform: uppercase;
     font-weight: 500;
     line-height: 0.9;
 }
 
 #heading #secondH1{
-    margin-left: 170px; 
+    margin-left: 10vw; 
 }
 
 .heading2{
@@ -64,7 +65,7 @@ html, body{
 
 .heading2 h5{
     text-transform: uppercase;
-    font-size: 2vw;
+    font-size: 1vw;
     text-align: right;
     font-weight: 400 ;
 }
@@ -77,6 +78,39 @@ html, body{
 #subHeadings h5{
     text-align: right;
     text-transform: uppercase;
-    margin-top: 10px;
-    font-size: 2vw;
+    margin-top: 0.5vw;
+    font-size: 1.5vw;
+    font-weight: 500;
+    line-height: 0.8;
+}
+
+#herofooter{
+    padding: 0 2vw;
+    position: absolute;
+    width: 100%;
+    bottom: 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#herofooter a{
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase; 
+}
+
+
+#section2{
+    padding-top: 200px;
+    background-color: black;
+    width: 100%;
+    height: 100vh;
+    color: white;
+}
+
+#projects{
+    padding-left: 32px;
+    width: 90%;
+    border-top: 1px solid white;
 }
