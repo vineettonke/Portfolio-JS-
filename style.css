@@ -110,7 +110,27 @@ html, body{
 }
 
 #projects{
-    padding-left: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3.5vw 3vw;
     width: 90%;
     border-top: 1px solid white;
+}
+
+#projects h1{
+    text-transform: uppercase;
+    font-size: 8vw;
+    opacity: .7;
+    font-weight: 600;
+}
+
+.lastProject{
+    border-bottom: 1px solid white;
+}
+
+#projects img{
+    height: 30%;
+    z-index: 999;
+    position: absolute;
 }
