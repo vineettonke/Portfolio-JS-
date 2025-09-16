@@ -19,6 +19,7 @@ html, body{
     height: 100vh;
     background-color: #000000;
     color: white;
+    position: relative;
 }
 
 #navbar{
@@ -115,9 +116,9 @@ html, body{
     align-items: center;
     justify-content: center;
     border-radius: 40px;
-    background-image: linear-gradient(150deg, rgba(255, 215, 253, 0.164), rgba(0, 174, 255, 0.05));
+    /* background-image: linear-gradient(150deg, rgba(255, 215, 253, 0.164), rgba(0, 174, 255, 0.05));
     backdrop-filter: blur(20px);
-    box-shadow: 0px 0px 24px rgba(94, 94, 94, 0.637);
+    box-shadow: 0px 0px 24px rgba(94, 94, 94, 0.637); */
 }
 
 #projects{
@@ -137,9 +138,8 @@ html, body{
     font-weight:400;
 }
 
-.lastProject{
-    height: 100px;
-    border-bottom-color: red;
+#projects.lastProject{
+    border-bottom: none;
 }
 
 #projects img{
@@ -147,4 +147,96 @@ html, body{
     height: 20%;
     z-index: 999;
     position: absolute;
+}
+
+#section3{
+    background-color: black;
+    width: 100%;
+    height: 100vh;
+    color: white;
+    padding: 0px 40px;
+    position: relative;
+}
+
+#introBanner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0vw 27vw;
+    gap: 50px;
+    height: 75vh;
+}
+
+#introBanner img{
+    height: 30vh;
+    border-radius: 50%;
+}
+
+#aboutMe{
+    width: 25rem;
+    height: 40%;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+#aboutMe h4{
+    line-height: 2;
+    opacity: 0.7;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+#aboutMe p{
+    line-height: 1.5;
+    padding-bottom: 30px;
+}
+
+#aboutMe a{
+    text-decoration: none;
+    color: white;
+    border-radius: 25px;
+    border: 2px solid white;
+    padding: 5px 20px;
+}
+
+#youtube{
+    text-transform: uppercase;
+}
+
+#youtube h5{
+    font-weight: 500;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+#endFooter{
+    position: absolute;
+    bottom: 3%;
+    right: 2vw;
+    left: 2vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#leftFooter{
+    width: 7%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#rightFooter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+}
+
+#rightFooter a{
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
 }
