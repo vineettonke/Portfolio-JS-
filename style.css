@@ -10,8 +10,29 @@ html, body{
     width: 100%;
 }
 
+#circle-cursor{
+    transition: cubic-bezier(1, 1, 1, 1) all 0.1s;
+    width: 10px;
+    height: 10px;
+    z-index: 99999;
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.bounds{
+    width: fit-content;
+    overflow: hidden;
+}
+
+.bounds .boundingelem{
+    transform: translateY(110%);
+    transition: h1 0.5s ease-out;
+}
+
 #main{
     width: 100%;
+    background-color: #000000;
 }
 
 #hero{
@@ -61,6 +82,9 @@ html, body{
 }
 
 .heading2{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
     width: fit-content;
 }
 
@@ -72,6 +96,9 @@ html, body{
 }
 
 #subHeadings{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
     margin-top: 10vw;
     padding-right: 48px;
 }
