@@ -16,8 +16,22 @@ function heroPageAnimation(){
             y: 0,
             ease: Expo.easeInOut,
             duration: 1,
+            delay: -.5,
             stagger: .2
         })
+        .from("#herofooter", {
+            y: '-10',
+            opacity: 0,
+            duration: 1,
+            delay: -.5,
+            ease: Expo.easeInOut
+        })
+}
+
+function circleflat(){
+    window.addEventListener("mousemove", function(dets){
+        
+    })
 }
 
 function circleCursor(){
