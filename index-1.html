@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vineet Tonke - Product Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+    
+    <style>
+        /* Locomotive Scroll CSS */
+        html.has-scroll-smooth {
+            overflow: hidden;
+        }
+
+        html.has-scroll-dragging {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .has-scroll-smooth body {
+            overflow: hidden;
+        }
+
+        .has-scroll-smooth [data-scroll-container] {
+            min-height: 100vh;
+        }
+
+        [data-scroll-direction="horizontal"] [data-scroll-container] {
+            height: 100vh;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        [data-scroll-direction="horizontal"] [data-scroll-section] {
+            display: inline-block;
+            vertical-align: top;
+            white-space: nowrap;
+            height: 100%;
+        }
+
+        .c-scrollbar {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 11px;
+            height: 100%;
+            transform-origin: center right;
+            transition: transform 0.3s, opacity 0.3s;
+            opacity: 0;
+        }
+
+        .c-scrollbar:hover {
+            transform: scaleX(1.45);
+        }
+
+        .c-scrollbar:hover, .has-scroll-scrolling .c-scrollbar, .has-scroll-dragging .c-scrollbar {
+            opacity: 1;
+        }
+
+        [data-scroll-direction="horizontal"] .c-scrollbar {
+            width: 100%;
+            height: 10px;
+            top: auto;
+            bottom: 0;
+            transform: scaleY(1);
+        }
+
+        [data-scroll-direction="horizontal"] .c-scrollbar:hover {
+            transform: scaleY(1.3);
+        }
+
+        .c-scrollbar_thumb {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: black;
+            opacity: 0.5;
+            width: 7px;
+            border-radius: 10px;
+            margin: 2px;
+            cursor: -webkit-grab;
+            cursor: grab;
+        }
+
+        .has-scroll-dragging .c-scrollbar_thumb {
+            cursor: -webkit-grabbing;
+            cursor: grabbing;
+        }
+
+        [data-scroll-direction="horizontal"] .c-scrollbar_thumb {
+            right: auto;
+            bottom: 0;
+        }
+
+        /* Main Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            background-color: #000000;
+        }
+
+        #circle-cursor {
+            transition: all 0.1s cubic-bezier(1, 1, 1, 1);
+            width: 10px;
+            height: 10px;
+            z-index: 99999;
+            position: fixed;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
+            mix-blend-mode: difference;
+        }
+
+        .bounds {
+            width: fit-content;
+            overflow: hidden;
+        }
+
+        .bounds .boundingelem {
+            transform: translateY(110%);
+            transition: transform 0.5s ease-out;
+        }
+
+        #main {
+            width: 100%;
+            background-color: #000000;
+        }
+
+        #hero {
+            width: 100%;
+            height: 100vh;
+            background-color: #000000;
+            color: white;
+            position: relative;
+        }
+
+        #navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 32px 48px;
+            width: 100%;
+        }
+
+        #navbar a {
+            font-size: 16px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+        }
+
+        #navbar h4 {
+            font-size: 16px;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        #heading {
+            margin-top: 80px;
+        }
+
+        #heading h1 {
+            margin-left: 40px;
+            opacity: 0.7;
+            font-size: 10vw;
+            text-transform: uppercase;
+            font-weight: 500;
+            line-height: 0.9;
+        }
+
+        #heading #secondH1 {
+            margin-left: 10vw; 
+        }
+
+        .heading2 {
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            width: fit-content;
+        }
+
+        .heading2 h5 {
+            text-transform: uppercase;
+            font-size: 1vw;
+            text-align: right;
+            font-weight: 400;
+        }
+
+        #subHeadings {
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            margin-top: 10vw;
+            padding-right: 48px;
+        }
+
+        #subHeadings h5 {
+            text-align: right;
+            text-transform: uppercase;
+            margin-top: 0.5vw;
+            font-size: 1.5vw;
+            font-weight: 500;
+            line-height: 0.8;
+        }
+
+        #herofooter {
+            padding: 0 2vw;
+            position: absolute;
+            width: 100%;
+            bottom: 3%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #herofooter a {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: opacity 0.3s ease;
+        }
+
+        #herofooter a:hover {
+            opacity: 0.7;
+        }
+
+        #section2 {
+            padding: 10vh 5vw;
+            background-color: black;
+            width: 100%;
+            min-height: 100vh;
+            color: white;
+        }
+
+        #project {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 40px;
+        }
+
+        #projects {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2vw 3vw;
+            width: 90%;
+            border-bottom: 1px solid rgb(87, 87, 87);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        #projects:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        #projects h1 {
+            text-transform: uppercase;
+            font-size: 8vh;
+            opacity: .7;
+            font-weight: 400;
+            transition: opacity 0.3s ease;
+        }
+
+        #projects:hover h1 {
+            opacity: 1;
+        }
+
+        #projects.lastProject {
+            border-bottom: none;
+        }
+
+        #projects img {
+            display: none;
+            height: 20vh;
+            z-index: 999;
+            position: absolute;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        #projects:hover img {
+            display: block;
+            opacity: 1;
+        }
+
+        #section3 {
+            background-color: black;
+            width: 100%;
+            min-height: 100vh;
+            color: white;
+            padding: 40px;
+            position: relative;
+        }
+
+        #introBanner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            min-height: 75vh;
+            flex-wrap: wrap;
+        }
+
+        #introBanner img {
+            height: 30vh;
+            width: 30vh;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #333;
+        }
+
+        #aboutMe {
+            max-width: 25rem;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        #aboutMe h4 {
+            line-height: 2;
+            opacity: 0.7;
+            font-weight: normal;
+            text-transform: uppercase;
+        }
+
+        #aboutMe p {
+            line-height: 1.5;
+        }
+
+        #btn a {
+            text-decoration: none;
+            color: white;
+            border-radius: 25px;
+            border: 2px solid white;
+            padding: 10px 30px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        #btn a:hover {
+            background-color: white;
+            color: black;
+        }
+
+        #youtube {
+            text-transform: uppercase;
+            margin-top: 40px;
+        }
+
+        #youtube h5 {
+            font-weight: 500;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        #youtube p {
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        #youtube p:hover {
+            opacity: 0.7;
+        }
+
+        #endFooter {
+            position: absolute;
+            bottom: 3%;
+            right: 2vw;
+            left: 2vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #leftFooter {
+            display: flex;
+            gap: 20px;
+        }
+
+        #leftFooter h5 {
+            opacity: 0.7;
+        }
+
+        #rightFooter {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        #rightFooter a {
+            text-decoration: none;
+            color: white;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        #rightFooter a:hover {
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #heading h1 {
+                font-size: 15vw;
+                margin-left: 20px;
+            }
+
+            #heading #secondH1 {
+                margin-left: 5vw;
+            }
+
+            .heading2 h5 {
+                font-size: 3vw;
+            }
+
+            #subHeadings h5 {
+                font-size: 4vw;
+            }
+
+            #introBanner {
+                flex-direction: column;
+                text-align: center;
+                padding: 0 20px;
+            }
+
+            #projects h1 {
+                font-size: 6vh;
+            }
+
+            #navbar {
+                padding: 20px;
+            }
+
+            #endFooter {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            #rightFooter {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="circle-cursor"></div>
+
+    <div id="main" data-scroll-container>
+        <div id="hero" data-scroll-section>
+            <div id="navbar">
+                <a href="#">Vineet Tonke</a>
+                <h4>MENU+</h4>
+            </div>
+
+            <div id="heading">
+                <div class="bounds">
+                    <h1 class="boundingelem">Product</h1>
+                </div>
+                
+                <div class="heading2">
+                    <div class="bounds">
+                        <h1 class="boundingelem" id="secondH1">Designer</h1>
+                    </div>
+                    <div class="bounds">
+                        <h5 class="boundingelem">Based in India</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div id="subHeadings">
+                <div class="bounds">
+                    <h5 class="boundingelem">Available for Full Time & Freelance</h5>
+                </div>
+                <div class="bounds">
+                    <h5 class="boundingelem">work from may '25</h5>
+                </div>
+            </div>
+
+            <div id="herofooter">
+                <a href="#" class="hover-target">
+                    Previously worked at YML <i class="ri-arrow-right-up-line"></i>
+                </a>
+                <a href="#" class="hover-target">
+                    Protopie Ambassador <i class="ri-arrow-right-up-line"></i>
+                </a>
+                <a href="#section2" class="hover-target">
+                    <i class="ri-arrow-down-circle-fill"></i>
+                    <i class="ri-arrow-down-circle-fill"></i>
+                </a>
+            </div>
+        </div>
+
+        <div id="section2" data-scroll-section>
+            <div id="project">
+                <div id="projects" class="hover-target">
+                    <div style="width: 100px; height: 60px; background: linear-gradient(45deg, #ff6b6b, #4ecdc4); border-radius: 8px; display: none;" class="project-img"></div>
+                    <h1>Lucid Motors</h1>
+                    <h5>2025</h5>
+                </div>
+                <div id="projects" class="hover-target">
+                    <div style="width: 100px; height: 60px; background: linear-gradient(45deg, #667eea, #764ba2); border-radius: 8px; display: none;" class="project-img"></div>
+                    <h1>Baron Capital</h1>
+                    <h5>2025</h5>
+                </div>
+                <div id="projects" class="hover-target">
+                    <div style="width: 100px; height: 60px; background: linear-gradient(45deg, #f093fb, #f5576c); border-radius: 8px; display: none;" class="project-img"></div>
+                    <h1>NFL</h1>
+                    <h5>2025</h5>
+                </div>
+                <div id="projects" class="hover-target">
+                    <div style="width: 100px; height: 60px; background: linear-gradient(45deg, #4facfe, #00f2fe); border-radius: 8px; display: none;" class="project-img"></div>
+                    <h1>Placenew</h1>
+                    <h5>2025</h5>
+                </div>
+                <div id="projects" class="lastProject hover-target">
+                    <div style="width: 100px; height: 60px; background: linear-gradient(45deg, #43e97b, #38f9d7); border-radius: 8px; display: none;" class="project-img"></div>
+                    <h1>Somos</h1>
+                    <h5>2025</h5>
+                </div> 
+            </div>
+        </div>
+
+        <div id="section3" data-scroll-section>
+            <div id="introBanner">
+                <div style="height: 30vh; width: 30vh; border-radius: 50%; background: linear-gradient(45deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">VT</div>
+                <div id="aboutMe">
+                    <div id="content">
+                        <h4>(About me)</h4>
+                        <p>I'm a product and motion designer who loves creating things that are not just eye candy but also fix life's little hiccups. When I'm not glued to my computer like a robot or scribbling on my iPad, you might catch me leveling up in video games, snapping photos like a wannabe pro, or watching football because football is life. My design philosophy? Keep it snazzy, make it work, and sprinkle in a bit of fun. I'm the designer you want on your team if you want people to exclaim, "I need that in my life!".</p>
+                    </div>
+                    
+                    <div id="btn">
+                        <a href="#" class="hover-target">Let's talk</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="youtube">
+                <h5>Oops, almost forgot…</h5>
+                <p class="hover-target">Subscribe to my youtube channel <i class="ri-arrow-right-up-line"></i></p>
+            </div>
+
+            <div id="endFooter">
+                <div id="leftFooter">
+                    <h5>2025 &copy;</h5>
+                    <h5 id="current-time">(time)</h5>
+                </div>
+
+                <div id="rightFooter">
+                    <a href="#" class="hover-target">dribbble</a>
+                    <a href="#" class="hover-target">instagram</a>
+                    <a href="#" class="hover-target">linkedin</a>
+                    <a href="#" class="hover-target">x/twitter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
+    
+    <script>
+        // Initialize Locomotive Scroll
+        const scroll = new LocomotiveScroll({
+            el: document.querySelector('#main'),
+            smooth: true
+        });
+
+        function heroPageAnimation() {
+            let tl = gsap.timeline();
+
+            tl.from("#navbar", {
+                y: -10,
+                opacity: 0,
+                duration: 1.5,
+                ease: "expo.inOut"
+            })
+            .to(".boundingelem", {
+                y: 0,
+                ease: "expo.inOut",
+                duration: 1,
+                delay: -0.5,
+                stagger: 0.2
+            })
+            .from("#herofooter", {
+                y: -10,
+                opacity: 0,
+                duration: 1,
+                delay: -0.5,
+                ease: "expo.inOut"
+            });
+        }
+
+        function customCursor() {
+            const cursor = document.querySelector("#circle-cursor");
+            if (!cursor) return;
+
+            let mouseX = 0, mouseY = 0;
+            let cursorX = 0, cursorY = 0;
+            let scaleX = 1, scaleY = 1;
+
+            window.addEventListener("mousemove", (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                cursor.style.opacity = "1"; 
+            });
+
+            window.addEventListener("mouseleave", () => {
+                cursor.style.opacity = "0";
+            });
+
+            function animate() {
+                cursorX += (mouseX - cursorX) * 0.2;
+                cursorY += (mouseY - cursorY) * 0.2;
+
+                let dx = mouseX - cursorX;
+                let dy = mouseY - cursorY;
+
+                scaleX = gsap.utils.clamp(0.8, 1.2, 1 + dx * 0.01);
+                scaleY = gsap.utils.clamp(0.8, 1.2, 1 + dy * 0.01);
+
+                cursor.style.transform = `translate(${cursorX - 5}px, ${cursorY - 5}px) scale(${scaleX}, ${scaleY})`;
+
+                requestAnimationFrame(animate);
+            }
+            animate();
+
+            // Hover effects for interactive elements
+            const hoverTargets = document.querySelectorAll(".hover-target");
+            hoverTargets.forEach(el => {
+                el.addEventListener("mouseenter", () => {
+                    gsap.to(cursor, {
+                        scale: 2.5,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+                el.addEventListener("mouseleave", () => {
+                    gsap.to(cursor, {
+                        scale: 1,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+            });
+        }
+
+        // Project hover animations
+        function projectHoverEffects() {
+            const projects = document.querySelectorAll("#projects");
+            
+            projects.forEach((project) => {
+                const projectImg = project.querySelector(".project-img, img");
+                
+                project.addEventListener("mouseenter", (e) => {
+                    if (projectImg) {
+                        projectImg.style.display = "block";
+                        gsap.to(projectImg, {
+                            opacity: 1,
+                            duration: 0.3,
+                            ease: "power2.out"
+                        });
+                    }
+                });
+
+                project.addEventListener("mouseleave", () => {
+                    if (projectImg) {
+                        gsap.to(projectImg, {
+                            opacity: 0,
+                            duration: 0.3,
+                            ease: "power2.out",
+                            onComplete: () => {
+                                projectImg.style.display = "none";
+                            }
+                        });
+                    }
+                });
+
+                project.addEventListener("mousemove", (e) => {
+                    if (projectImg) {
+                        const rect = project.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        
+                        gsap.to(projectImg, {
+                            x: x - 50,
+                            y: y - 30,
+                            duration: 0.3,
+                            ease: "power2.out"
+                        });
+                    }
+                });
+            });
+        }
+
+        // Update time
+        function updateTime() {
+            const timeElement = document.querySelector("#current-time");
+            if (timeElement) {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString('en-US', { 
+                    hour12: false,
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                timeElement.textContent = `(${timeString})`;
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        function setupSmoothScroll() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement && scroll) {
+                        scroll.scrollTo(targetElement);
+                    }
+                });
+            });
+        }
+
+        // Initialize everything
+        function init() {
+            customCursor();
+            heroPageAnimation();
+            projectHoverEffects();
+            updateTime();
+            setInterval(updateTime, 1000);
+            setupSmoothScroll();
+        }
+
+        // Wait for DOM to be ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (scroll) {
+                scroll.update();
+            }
+        });
+    </script>
+</body>
+</html>
