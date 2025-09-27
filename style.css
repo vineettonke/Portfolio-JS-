@@ -139,27 +139,23 @@ html, body{
     color: white;
 }
 
-#project{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 40px;
-    /* background-image: linear-gradient(150deg, rgba(255, 215, 253, 0.164), rgba(0, 174, 255, 0.05));
-    backdrop-filter: blur(20px);
-    box-shadow: 0px 0px 24px rgba(94, 94, 94, 0.637); */
+.elem{
+    width: 100%;
+    padding: 4vw 3vw;
+    
 }
 
-#projects{
+.elem{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0vw 3vw;
     width: 90%;
+    position: relative;
     border-bottom: 1px solid rgb(87, 87, 87);
 }
 
-#projects h1{
+.elem h1{
     text-transform: uppercase;
     font-size: 8vh;
     padding: 1vw 0vw;
@@ -167,13 +163,13 @@ html, body{
     font-weight:400;
 }
 
-#projects.lastProject{
+.elemLast{
     border-bottom: none;
 }
 
-#projects img{
-    display: none;
-    height: 20%;
+.elem img{
+    opacity: 0;
+    height: 140%;
     z-index: 999;
     position: absolute;
 }

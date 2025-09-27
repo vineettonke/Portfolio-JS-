@@ -58,11 +58,8 @@ function customCursor() {
     animate();
 }
 
-document.querySelectorAll(".elem").forEach(function(elem) {
-    var rotate = 0;
-    var diffrot = 0;
-    
-    elem.addEventListener("mousemove", function(details){
+document.querySelectorAll(".elem").forEach(function(elem) { 
+    elem.addEventListener("mouseleave", function(details){
         gsap.to(elem.querySelector("img"), {
             opacity: 0,
             ease: Power3,
@@ -76,15 +73,16 @@ document.querySelectorAll(".elem").forEach(function(elem) {
     var rotate = 0;
     var diffrot = 0;
     
-    elem.addEventListener("mousemove", function(details){
-        var diff = details.clientY - elem.getBoundingClientRect().top;
-        diffrot = details. clientX - rotate;
-        rotate = details.clientX;
+    elem.addEventListener("mousemove", function(dets){
+        console.log(elem.getBoundingClientRect());
+        var diff = dets.clientY - elem.getBoundingClientRect().top;
+        diffrot = dets. clientX - rotate;
+        rotate = dets.clientX;
         gsap.to(elem.querySelector("img"), {
             opacity: 1,
             ease: Power3,
             top: diff,
-            left: details.clientX,
+            left: dets.clientX,
             rotate: gsap.utils.clamp(-20, 20, diffrot)
         });
     });
